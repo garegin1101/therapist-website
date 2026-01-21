@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
 
-export default function BookHy() {
+export default function BookRu() {
   return (
     <>
       <Head>
-        <title>Ամրագրել Թերապիայի Հանդիպում | Արա Միքայելյան</title>
+        <title>Записаться на сессию терапии | Ара Микаелян</title>
         <meta
           name="description"
-          content="Ամրագրեք թերապիայի հանդիպում Արա Միքայելյանի հետ - Հոգեբան և Հոգեթերապևտ Երևան, Հայաստան"
+          content="Записаться на сессию терапии с Арой Микаеляном - Психолог и Психотерапевт в Ереване, Армения"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -20,16 +20,16 @@ export default function BookHy() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <Link
-                href="/hy"
+                href="/ru"
                 className="text-xl font-semibold text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
-                Արա Միքայելյան
+                Ара Микаелян
               </Link>
               <Link
-                href="/hy"
+                href="/ru"
                 className="text-sm text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
               >
-                ← Վերադառնալ Գլխավոր
+                ← Вернуться на главную
               </Link>
             </div>
           </div>
@@ -39,11 +39,11 @@ export default function BookHy() {
         <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Ամրագրել Թերապիայի Հանդիպում
+              Записаться на сессию терапии
             </h1>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ընտրեք ձեզ հարմար ժամանակ: Դուք կստանաք էլ. փոստի հաստատում՝
-              հանդիպման բոլոր մանրամասներով:
+              Выберите удобное для вас время. Вы получите подтверждение по 
+              электронной почте со всеми деталями встречи.
             </p>
           </div>
 
@@ -54,14 +54,14 @@ export default function BookHy() {
               className="w-full h-[75vh] md:h-[80vh] rounded-lg border-0"
               loading="lazy"
               allow="camera; microphone; fullscreen; clipboard-read; clipboard-write"
-              title="Ամրագրել Թերապիայի Հանդիպում"
+              title="Записаться на сессию терапии"
             />
           </div>
 
           {/* Fallback Link */}
           <div className="text-center">
             <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              Խնդի՞ր կա ամրագրման ֆորման տեսնելու հետ:
+              Проблемы с загрузкой формы записи?
             </p>
             <a
               href="https://cal.com/aramikayelyan/therapy-session"
@@ -69,7 +69,7 @@ export default function BookHy() {
               rel="noopener noreferrer"
               className="inline-flex items-center text-primary-600 hover:text-primary-700 dark:text-primary-400 dark:hover:text-primary-300 font-medium transition-colors"
             >
-              Սեղմեք այստեղ՝ նոր էջում բացելու համար
+              Нажмите здесь, чтобы открыть в новой вкладке
               <svg
                 className="w-4 h-4 ml-1"
                 fill="none"
@@ -89,7 +89,7 @@ export default function BookHy() {
           {/* Additional Info */}
           <div className="mt-12 bg-primary-50 dark:bg-gray-700/50 rounded-xl p-6">
             <h2 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-              Ինչ սպասել
+              Что ожидать
             </h2>
             <ul className="space-y-2 text-gray-700 dark:text-gray-300">
               <li className="flex items-start">
@@ -105,8 +105,7 @@ export default function BookHy() {
                   />
                 </svg>
                 <span>
-                  Ընտրեք ձեր նախընտրած ամսաթիվը և ժամանակը հասանելի
-                  տարբերակներից
+                  Выберите желаемую дату и время из доступных вариантов
                 </span>
               </li>
               <li className="flex items-start">
@@ -122,8 +121,7 @@ export default function BookHy() {
                   />
                 </svg>
                 <span>
-                  Տրամադրեք հիմնական տեղեկատվություն և պատասխանեք մի քանի
-                  նախնական հարցերի
+                  Предоставьте основную информацию и ответьте на несколько вводных вопросов
                 </span>
               </li>
               <li className="flex items-start">
@@ -139,8 +137,7 @@ export default function BookHy() {
                   />
                 </svg>
                 <span>
-                  Ստացեք էլ. փոստի հաստատում՝ հանդիպման մանրամասներով և
-                  նախապատրաստման խորհուրդներով
+                  Получите подтверждение по электронной почте с деталями встречи и советами по подготовке
                 </span>
               </li>
               <li className="flex items-start">
@@ -156,7 +153,7 @@ export default function BookHy() {
                   />
                 </svg>
                 <span>
-                  Միացեք հանդիպմանը առցանց կամ անձնապես՝ ըստ ամրագրված ժամանակի
+                  Присоединяйтесь к встрече онлайн или лично в запланированное время
                 </span>
               </li>
             </ul>
