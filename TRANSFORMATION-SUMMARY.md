@@ -76,10 +76,11 @@ Your Next.js developer portfolio has been successfully transformed into a **prof
 ### Immediate (Required):
 
 1. **Replace placeholders** with your actual information:
-   - `Dr. Your Name` → Your name
-   - `your-email@example.com` → Your email
-   - `+374 XX XXX XXX` → Your phone
-   - `YOUR_USERNAME` → Your Cal.com username (in 2 files)
+   - `Dr. Your Name` → Ara Miqayelyan
+   - `your-email@example.com` → arayikmiqayelyan1997@gmail.com
+   - `+374 XX XXX XXX` → +374 94 164634
+   - `YOUR_USERNAME` → aramikayelyan
+
 
 2. **Set up Cal.com account**:
    - Sign up at [cal.com](https://cal.com)

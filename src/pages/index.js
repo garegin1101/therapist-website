@@ -57,6 +57,31 @@ export default function Home() {
                 >
                   Contact
                 </a>
+                
+                {/* Language Switcher */}
+                <div className="flex items-center gap-2 border-l border-gray-300 dark:border-gray-600 pl-4">
+                  <Link
+                    href="/"
+                    className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+                  >
+                    EN
+                  </Link>
+                  <span className="text-gray-400">|</span>
+                  <Link
+                    href="/hy"
+                    className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                  >
+                    ՀԱՅ
+                  </Link>
+                  <span className="text-gray-400">|</span>
+                  <Link
+                    href="/ru"
+                    className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                  >
+                    РУ
+                  </Link>
+                </div>
+
                 <Link
                   href="/book"
                   className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-full font-medium transition-all hover:shadow-lg"
@@ -66,7 +91,15 @@ export default function Home() {
               </div>
 
               {/* Mobile Menu Button */}
-              <div className="md:hidden">
+              <div className="md:hidden flex items-center gap-3">
+                {/* Mobile Language Switcher */}
+                <div className="flex items-center gap-1">
+                  <Link href="/" className="text-xs font-medium text-primary-600 dark:text-primary-400">EN</Link>
+                  <span className="text-gray-400 text-xs">|</span>
+                  <Link href="/hy" className="text-xs font-medium text-gray-600 dark:text-gray-400">ՀԱՅ</Link>
+                  <span className="text-gray-400 text-xs">|</span>
+                  <Link href="/ru" className="text-xs font-medium text-gray-600 dark:text-gray-400">РУ</Link>
+                </div>
                 <Link
                   href="/book"
                   className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all"
@@ -130,32 +163,29 @@ export default function Home() {
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg dark:prose-invert mx-auto">
                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  With over 8 years of experience in clinical psychology, I am
-                  dedicated to creating a safe, non-judgmental space where
-                  clients can explore their thoughts, feelings, and behaviors. I
-                  believe that therapy is about more than just addressing
-                  symptoms – it's about understanding the whole person and
-                  empowering lasting change.
+                  With 6 years of experience in psychology and 3 years specializing as a psychotherapist, 
+                  I am dedicated to creating a safe, non-judgmental space where clients can explore their 
+                  thoughts, feelings, and find meaning in their experiences. My approach is rooted in 
+                  Logotherapy and Existential-Humanistic psychology, focusing on helping you discover 
+                  purpose and overcome life's challenges.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  I hold a Master's degree in Clinical Psychology and am
-                  licensed to practice in Armenia. My approach is collaborative
-                  and tailored to each individual's unique needs, drawing from
-                  evidence-based practices including Cognitive Behavioral
-                  Therapy (CBT), psychodynamic therapy, and trauma-informed
-                  care.
+                  I hold a Bachelor's degree in Psychology from Yerevan State University and completed 
+                  advanced training in Logotherapy and Existential Analysis at the Moscow Institute of 
+                  Psychoanalysis. I've also trained in EMDR, Gestalt therapy, and personality disorders, 
+                  bringing an integrative approach tailored to each individual's unique needs.
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Whether you're dealing with anxiety, depression, relationship
-                  challenges, or seeking personal growth, I'm here to support
-                  you on your journey toward healing and self-discovery.
+                  Whether you're dealing with anxiety, depression, trauma, relationship challenges, or 
+                  searching for life's meaning, I'm here to support you on your journey toward healing, 
+                  growth, and a more fulfilling life.
                 </p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    8+
+                    6
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Years Experience
@@ -163,10 +193,10 @@ export default function Home() {
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    500+
+                    3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Clients Helped
+                    Years as Psychotherapist
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -370,48 +400,48 @@ export default function Home() {
               {/* Approach 1 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Cognitive Behavioral Therapy (CBT)
+                  Logotherapy
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  A structured, goal-oriented approach that helps identify and
-                  change negative thought patterns and behaviors. Highly
-                  effective for anxiety, depression, and many other conditions.
+                  Based on Viktor Frankl's approach, Logotherapy helps you discover meaning and purpose in life, 
+                  even in challenging circumstances. It focuses on finding what makes your life worth living and 
+                  using that as a source of strength and motivation.
                 </p>
               </div>
 
               {/* Approach 2 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Psychodynamic Therapy
+                  Existential-Humanistic Therapy
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Explores how past experiences and unconscious patterns
-                  influence present behavior. Promotes deep self-understanding
-                  and lasting emotional healing.
+                  This approach emphasizes personal freedom, choice, and responsibility. Together, we explore 
+                  life's fundamental questions, helping you make authentic choices and live a more fulfilling, 
+                  meaningful life aligned with your values.
                 </p>
               </div>
 
               {/* Approach 3 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Trauma-Informed Care
+                  EMDR & Trauma Work
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  A sensitive approach that recognizes the impact of trauma and
-                  focuses on safety, trust, and empowerment throughout the
-                  healing process.
+                  Eye Movement Desensitization and Reprocessing (EMDR) is an evidence-based method for processing 
+                  traumatic memories and experiences. It helps reduce emotional distress and supports healing from 
+                  PTSD, complex trauma, and difficult life events.
                 </p>
               </div>
 
               {/* Approach 4 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Client-Centered Approach
+                  Integrative Approach
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  You are the expert on your own life. I provide a supportive,
-                  non-judgmental space where you can explore your feelings and
-                  find your own path forward.
+                  I combine techniques from Gestalt therapy, existential psychology, and other evidence-based 
+                  methods to create a personalized treatment plan. Each person is unique, and your therapy should 
+                  be tailored to your specific needs and goals.
                 </p>
               </div>
             </div>
