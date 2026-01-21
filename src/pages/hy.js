@@ -4,16 +4,14 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export default function HomeHy() {
   return (
     <>
       <Head>
-        <title>
-          Ara Miqayelyan | Psychologist & Therapist in Yerevan, Armenia
-        </title>
+        <title>Արա Միքայելյան | Հոգեբան և Հոգեթերապևտ Երևան, Հայաստան</title>
         <meta
           name="description"
-          content="Professional psychological therapy services in Yerevan. Specialized in anxiety, depression, relationships, and personal growth."
+          content="Մասնագիտական հոգեթերապևտիկ ծառայություններ Երևանում: Մասնագիտացված տագնապի, դեպրեսիայի, հարաբերությունների և անձնական աճի հարցերում:"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
@@ -25,10 +23,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
               <Link
-                href="/"
+                href="/hy"
                 className="text-xl font-semibold text-gray-900 dark:text-white"
               >
-                Ara Miqayelyan
+                Արա Միքայելյան
               </Link>
 
               {/* Desktop Navigation */}
@@ -37,39 +35,39 @@ export default function Home() {
                   href="#about"
                   className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
-                  About
+                  Իմ Մասին
                 </a>
                 <a
                   href="#services"
                   className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
-                  Services
+                  Ծառայություններ
                 </a>
                 <a
                   href="#approach"
                   className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
-                  Approach
+                  Մոտեցում
                 </a>
                 <a
                   href="#contact"
                   className="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors"
                 >
-                  Contact
+                  Կապ
                 </a>
 
                 {/* Language Switcher */}
                 <div className="flex items-center gap-2 border-l border-gray-300 dark:border-gray-600 pl-4">
                   <Link
                     href="/"
-                    className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
+                    className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
                   >
                     EN
                   </Link>
                   <span className="text-gray-400">|</span>
                   <Link
                     href="/hy"
-                    className="text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 dark:hover:text-primary-400"
+                    className="text-sm font-medium text-primary-600 dark:text-primary-400 hover:underline"
                   >
                     ՀԱՅ
                   </Link>
@@ -83,10 +81,10 @@ export default function Home() {
                 </div>
 
                 <Link
-                  href="/book"
+                  href="/book-hy"
                   className="bg-primary-600 hover:bg-primary-700 text-white px-6 py-2 rounded-full font-medium transition-all hover:shadow-lg"
                 >
-                  Book a Session
+                  Ամրագրել Հանդիպում
                 </Link>
               </div>
 
@@ -96,14 +94,14 @@ export default function Home() {
                 <div className="flex items-center gap-1">
                   <Link
                     href="/"
-                    className="text-xs font-medium text-primary-600 dark:text-primary-400"
+                    className="text-xs font-medium text-gray-600 dark:text-gray-400"
                   >
                     EN
                   </Link>
                   <span className="text-gray-400 text-xs">|</span>
                   <Link
                     href="/hy"
-                    className="text-xs font-medium text-gray-600 dark:text-gray-400"
+                    className="text-xs font-medium text-primary-600 dark:text-primary-400"
                   >
                     ՀԱՅ
                   </Link>
@@ -116,10 +114,10 @@ export default function Home() {
                   </Link>
                 </div>
                 <Link
-                  href="/book"
+                  href="/book-hy"
                   className="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-full text-sm font-medium transition-all"
                 >
-                  Book Session
+                  Ամրագրել
                 </Link>
               </div>
             </div>
@@ -130,37 +128,38 @@ export default function Home() {
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-              Ara Miqayelyan
+              Արա Միքայելյան
             </h1>
             <p className="text-xl md:text-2xl text-primary-600 dark:text-primary-400 mb-6 font-medium">
-              Psychologist / Therapist
+              Հոգեբան / Հոգեթերապևտ
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-              Based in Yerevan, Armenia
+              Երևան, Հայաստան
             </p>
             <p
               className={`${inter.className} text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-12 leading-relaxed`}
             >
-              I provide compassionate, evidence-based therapy to help you
-              navigate life's challenges. With a client-centered approach
-              integrating cognitive-behavioral therapy (CBT) and psychodynamic
-              techniques, I support individuals in achieving emotional
-              well-being, personal growth, and meaningful change.
+              Ես տրամադրում եմ համակրող, ապացույցների վրա հիմնված թերապիա՝
+              օգնելու ձեզ հաղթահարել կյանքի դժվարությունները: Հաճախորդակենտրոն
+              մոտեցմամբ՝ ինտեգրելով ճանաչողական-վարքային թերապիան (CBT) և
+              հոգեդինամիկ տեխնիկան՝ ես աջակցում եմ մարդկանց հուզական
+              բարեկեցության, անձնական աճի և իմաստալի փոփոխությունների հասնելու
+              գործում:
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link
-                href="/book"
+                href="/book-hy"
                 className="bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:shadow-xl hover:scale-105 w-full sm:w-auto"
               >
-                Book a Session
+                Ամրագրել Հանդիպում
               </Link>
               <a
                 href="#about"
                 className="border-2 border-primary-600 text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 px-8 py-4 rounded-full text-lg font-semibold transition-all w-full sm:w-auto"
               >
-                Learn More
+                Իմանալ Ավելին
               </a>
             </div>
           </div>
@@ -173,32 +172,34 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              About the Therapist
+              Հոգեթերապևտի Մասին
             </h2>
             <div className="max-w-4xl mx-auto">
               <div className="prose prose-lg dark:prose-invert mx-auto">
                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  With 6 years of experience in psychology and 3 years
-                  specializing as a psychotherapist, I am dedicated to creating
-                  a safe, non-judgmental space where clients can explore their
-                  thoughts, feelings, and find meaning in their experiences. My
-                  approach is rooted in Logotherapy and Existential-Humanistic
-                  psychology, focusing on helping you discover purpose and
-                  overcome life's challenges.
+                  Ունենալով 6 տարվա փորձ հոգեբանության մեջ և 3 տարի
+                  մասնագիտանալով որպես հոգեթերապևտ՝ ես նվիրված եմ ստեղծելու
+                  անվտանգ, դատողություններից զերծ տարածք, որտեղ հաճախորդները
+                  կարող են ուսումնասիրել իրենց մտքերը, զգացմունքները և գտնել
+                  իմաստ իրենց փորձառություններում: Իմ մոտեցումը հիմնված է
+                  լոգոթերապիայի և էքզիստենցիալ-հումանիստական հոգեբանության վրա՝
+                  կենտրոնանալով ձեզ օգնելու բացահայտել նպատակը և հաղթահարել
+                  կյանքի դժվարությունները:
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  I hold a Bachelor's degree in Psychology from Yerevan State
-                  University and completed advanced training in Logotherapy and
-                  Existential Analysis at the Moscow Institute of
-                  Psychoanalysis. I've also trained in EMDR, Gestalt therapy,
-                  and personality disorders, bringing an integrative approach
-                  tailored to each individual's unique needs.
+                  Ես ունեմ Հոգեբանության բակալավրի կոչում Երևանի պետական
+                  համալսարանից և ավարտել եմ առաջադեմ ուսուցում լոգոթերապիայի և
+                  էքզիստենցիալ անալիզի ոլորտում Մոսկվայի հոգեանալիզի
+                  ինստիտուտում: Ես նաև վերապատրաստվել եմ EMDR-ի, գեշտալտ
+                  թերապիայի և անհատականության խանգարումների ուղղությամբ՝ բերելով
+                  ինտեգրատիվ մոտեցում, որը հարմարեցված է յուրաքանչյուր մարդու
+                  եզակի կարիքներին:
                 </p>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Whether you're dealing with anxiety, depression, trauma,
-                  relationship challenges, or searching for life's meaning, I'm
-                  here to support you on your journey toward healing, growth,
-                  and a more fulfilling life.
+                  Անկախ նրանից՝ արդյոք դուք հանդիպում եք տագնապի, դեպրեսիայի,
+                  տրավմայի, հարաբերությունների դժվարությունների հետ, կամ փնտրում
+                  եք կյանքի իմաստը՝ ես այստեղ եմ՝ աջակցելու ձեզ ձեր ուղղությամբ
+                  դեպի բուժում, աճ և ավելի լիարժեք կյանք:
                 </p>
               </div>
 
@@ -208,7 +209,7 @@ export default function Home() {
                     6
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Years Experience
+                    Տարի Փորձ
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -216,7 +217,7 @@ export default function Home() {
                     3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Years as Psychotherapist
+                    Տարի Որպես Հոգեթերապևտ
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -224,7 +225,7 @@ export default function Home() {
                     3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Languages Spoken
+                    Լեզուներ
                   </div>
                 </div>
               </div>
@@ -236,11 +237,11 @@ export default function Home() {
         <section id="services" className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Services Offered
+              Մատուցվող Ծառայություններ
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Comprehensive therapeutic support tailored to your individual
-              needs
+              Համապարփակ թերապևտիկ աջակցություն՝ հարմարեցված ձեր անհատական
+              կարիքներին
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -262,41 +263,15 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Individual Therapy
+                  Անհատական Թերապիա
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  One-on-one sessions focused on your personal goals,
-                  challenges, and mental health needs.
+                  Անհատական նիստեր՝ կենտրոնացած ձեր անձնական նպատակների,
+                  դժվարությունների և մտավոր առողջության կարիքների վրա:
                 </p>
               </div>
 
               {/* Service 2 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Couples Therapy
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Strengthen your relationship, improve communication, and
-                  resolve conflicts together.
-                </p>
-              </div>
-
-              {/* Service 3 */}
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
                   <svg
@@ -314,15 +289,15 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Online Sessions
+                  Օնլայն Հանդիպումներ
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Convenient and confidential therapy from the comfort of your
-                  own space via video call.
+                  Հարմարավետ և գաղտնի թերապիա ձեր տան հարմարավետությունից՝
+                  տեսազանգի միջոցով:
                 </p>
               </div>
 
-              {/* Service 4 */}
+              {/* Service 3 */}
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
                   <svg
@@ -340,15 +315,15 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Anxiety & Stress
+                  Տագնապ և Սթրես
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Learn effective coping strategies to manage anxiety, stress,
-                  and overwhelming emotions.
+                  Սովորեք արդյունավետ հաղթահարման ռազմավարություններ տագնապը,
+                  սթրեսը և ճնշող հույզերը կառավարելու համար:
                 </p>
               </div>
 
-              {/* Service 5 */}
+              {/* Service 4 */}
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
                   <svg
@@ -366,15 +341,15 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Depression Support
+                  Դեպրեսիայի Աջակցություն
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Compassionate care for those experiencing depression, low
-                  mood, or loss of motivation.
+                  Համակրող խնամք նրանց համար, ովքեր ապրում են դեպրեսիա, ցածր
+                  տրամադրություն կամ մոտիվացիայի կորուստ:
                 </p>
               </div>
 
-              {/* Service 6 */}
+              {/* Service 5 */}
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
                 <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
                   <svg
@@ -392,11 +367,37 @@ export default function Home() {
                   </svg>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Personal Growth
+                  Անձնական Աճ
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">
-                  Develop self-awareness, build confidence, and work toward your
-                  full potential.
+                  Զարգացրեք ինքնագիտակցությունը, կառուցեք վստահություն և աշխատեք
+                  դեպի ձեր լիարժեք ներուժը:
+                </p>
+              </div>
+
+              {/* Service 6 */}
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
+                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
+                  <svg
+                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                  Տրավմա և PTSD
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Մասնագիտացված աջակցություն հետտրավմատիկ սթրեսային խանգարման և
+                  կոմպլեքս տրավմայի բուժման համար:
                 </p>
               </div>
             </div>
@@ -410,63 +411,66 @@ export default function Home() {
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Therapeutic Approach
+              Թերապևտիկ Մոտեցում
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Evidence-based methods tailored to your unique journey
+              Ապացույցների վրա հիմնված մեթոդներ՝ հարմարեցված ձեր եզակի
+              ուղղությանը
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Approach 1 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Logotherapy
+                  Լոգոթերապիա
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Based on Viktor Frankl's approach, Logotherapy helps you
-                  discover meaning and purpose in life, even in challenging
-                  circumstances. It focuses on finding what makes your life
-                  worth living and using that as a source of strength and
-                  motivation.
+                  Հիմնված Վիկտոր Ֆրանկլի մոտեցման վրա՝ Լոգոթերապիան օգնում է ձեզ
+                  հայտնաբերել իմաստ և նպատակ կյանքում, նույնիսկ դժվար
+                  իրավիճակներում: Այն կենտրոնանում է գտնելու այն, ինչը դարձնում
+                  է ձեր կյանքը արժանի ապրելու և օգտագործել այն որպես ուժի և
+                  մոտիվացիայի աղբյուր:
                 </p>
               </div>
 
               {/* Approach 2 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Existential-Humanistic Therapy
+                  Էքզիստենցիալ-Հումանիստական Թերապիա
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  This approach emphasizes personal freedom, choice, and
-                  responsibility. Together, we explore life's fundamental
-                  questions, helping you make authentic choices and live a more
-                  fulfilling, meaningful life aligned with your values.
+                  Այս մոտեցումը շեշտադրում է անձնական ազատությունը, ընտրությունը
+                  և պատասխանատվությունը: Միասին մենք ուսումնասիրում ենք կյանքի
+                  հիմնարար հարցերը՝ օգնելով ձեզ կատարել իսկական ընտրություններ և
+                  ապրել ավելի լիարժեք, իմաստալից կյանք՝ համաձայն ձեր արժեքների:
                 </p>
               </div>
 
               {/* Approach 3 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  EMDR & Trauma Work
+                  EMDR և Տրավմայի Աշխատանք
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Eye Movement Desensitization and Reprocessing (EMDR) is an
-                  evidence-based method for processing traumatic memories and
-                  experiences. It helps reduce emotional distress and supports
-                  healing from PTSD, complex trauma, and difficult life events.
+                  Աչքերի շարժման դեսենսիտիզացիան և վերամշակումը (EMDR)
+                  ապացուցված մեթոդ է տրավմատիկ հիշողությունների և
+                  փորձառությունների մշակման համար: Այն օգնում է նվազեցնել
+                  հուզական վիշտը և աջակցում է PTSD-ի, կոմպլեքս տրավմայի և դժվար
+                  կյանքի իրադարձությունների բուժմանը:
                 </p>
               </div>
 
               {/* Approach 4 */}
               <div className="bg-gradient-to-br from-primary-50 to-white dark:from-gray-700 dark:to-gray-800 p-8 rounded-2xl border border-primary-100 dark:border-gray-600">
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                  Integrative Approach
+                  Ինտեգրատիվ Մոտեցում
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  I combine techniques from Gestalt therapy, existential
-                  psychology, and other evidence-based methods to create a
-                  personalized treatment plan. Each person is unique, and your
-                  therapy should be tailored to your specific needs and goals.
+                  Ես համադրում եմ տեխնիկաներ գեշտալտ թերապիայից, էքզիստենցիալ
+                  հոգեբանությունից և այլ ապացույցների վրա հիմնված մեթոդներից՝
+                  ստեղծելու անհատականացված բուժման պլան: Յուրաքանչյուր մարդ
+                  եզակի է, և ձեր թերապիան պետք է հարմարեցված լինի ձեր կոնկրետ
+                  կարիքներին և նպատակներին:
                 </p>
               </div>
             </div>
@@ -474,17 +478,17 @@ export default function Home() {
             {/* Languages */}
             <div className="mt-12 text-center">
               <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
-                Languages
+                Լեզուներ
               </h3>
               <div className="flex flex-wrap justify-center gap-4">
                 <span className="bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-6 py-2 rounded-full font-medium">
-                  Armenian
+                  Հայերեն
                 </span>
                 <span className="bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-6 py-2 rounded-full font-medium">
-                  English
+                  Անգլերեն
                 </span>
                 <span className="bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-300 px-6 py-2 rounded-full font-medium">
-                  Russian
+                  Ռուսերեն
                 </span>
               </div>
             </div>
@@ -495,11 +499,11 @@ export default function Home() {
         <section id="contact" className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Get in Touch
+              Կապ Հաստատել
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Ready to start your journey? Book a session online or reach out
-              with any questions.
+              Պատրա՞ստ եք սկսել ձեր ուղևորությունը: Ամրագրեք հանդիպում առցանց
+              կամ կապ հաստատեք ցանկացած հարցով:
             </p>
 
             <div className="max-w-2xl mx-auto">
@@ -524,7 +528,7 @@ export default function Home() {
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                        Email
+                        Էլ. Փոստ
                       </h3>
                       <a
                         href="mailto:arayikmiqayelyan1997@gmail.com"
@@ -554,7 +558,7 @@ export default function Home() {
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                        Phone
+                        Հեռախոս
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400">
                         +374 94 164634
@@ -587,13 +591,13 @@ export default function Home() {
                     </div>
                     <div className="ml-4">
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                        Location
+                        Գտնվելու Վայրը
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400">
-                        Yerevan, Armenia
+                        Երևան, Հայաստան
                       </p>
                       <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
-                        In-person and online sessions available
+                        Անձնական և օնլայն հանդիպումներ հասանելի են
                       </p>
                     </div>
                   </div>
@@ -601,24 +605,24 @@ export default function Home() {
 
                 <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
-                    Prefer to book directly? Use the online booking system for
-                    fastest scheduling.
+                    Նախընտրու՞մ եք ուղղակի ամրագրել: Օգտագործեք առցանց ամրագրման
+                    համակարգը ավելի արագ ժամանակացույցի համար:
                   </p>
                   <Link
-                    href="/book"
+                    href="/book-hy"
                     className="block w-full text-center bg-primary-600 hover:bg-primary-700 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all hover:shadow-lg"
                   >
-                    Book a Session Now
+                    Ամրագրել Հանդիպում Հիմա
                   </Link>
                 </div>
               </div>
 
-              {/* Note about contact form */}
+              {/* Note about contact */}
               <div className="mt-6 p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
                 <p className="text-sm text-yellow-800 dark:text-yellow-200 text-center">
-                  <strong>Note:</strong> For appointment requests, please use
-                  the booking page. For general inquiries, feel free to email
-                  directly.
+                  <strong>Նշում:</strong> Հանդիպման հարցումների համար, խնդրում
+                  ենք օգտագործել ամրագրման էջը: Ընդհանուր հարցումների համար
+                  կարող եք էլ. փոստով կապ հաստատել:
                 </p>
               </div>
             </div>
@@ -630,11 +634,11 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <p className="text-gray-400 mb-2">
-                © {new Date().getFullYear()} Ara Miqayelyan. All rights
-                reserved.
+                © {new Date().getFullYear()} Արա Միքայելյան: Բոլոր իրավունքները
+                պաշտպանված են:
               </p>
               <p className="text-sm text-gray-500">
-                Professional psychological services in Yerevan, Armenia
+                Մասնագիտական հոգեբանական ծառայություններ Երևանում, Հայաստան
               </p>
             </div>
           </div>
