@@ -2,10 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function HomeHy() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -17,6 +20,33 @@ export default function HomeHy() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
+        }
+        .animate-scaleIn {
+          animation: scaleIn 0.3s ease-out;
+        }
+      `}</style>
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
         {/* Navigation */}
@@ -142,12 +172,17 @@ export default function HomeHy() {
               <p
                 className={`${inter.className} text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed`}
               >
-                Ես տրամադրում եմ համակրող, ապացույցների վրա հիմնված թերապիա՝
-                օգնելու ձեզ հաղթահարել կյանքի դժվարությունները: Հաճախորդակենտրոն
-                մոտեցմամբ՝ ինտեգրելով ճանաչողական-վարքային թերապիան (CBT) և
-                հոգեդինամիկ տեխնիկան՝ ես աջակցում եմ մարդկանց հուզական
-                բարեկեցության, անձնական աճի և իմաստալի փոփոխությունների հասնելու
-                գործում:
+                Ողջույն, ես Արա Միքայելյանն եմ՝ դիպլոմավորված հոգեբան, հոգեկան
+                առողջության խորհրդատու և հոգեկրթության մասնագետ: Logotherapy and
+                Existential Analysis Association-ի և ԱՇԴՎ Հայաստանի ասոցիացիայի
+                անդամ եմ: Հանդիսանում եմ ռեթրիթային խմբերի ֆասիլիտատոր, որտեղ
+                ապահովում ենք կոնֆիդենցիալ միջավայր խմբերի և անհատների համար:
+                Զբաղվում եմ նաև միջազգային երիտասարդական ծրագրերով, որոնք
+                ուղղված են երիտասարդների փափուկ հմտությունների (soft skills)
+                զարգացմանը, ադապտացիային, մասնագիտական կողմնորոշմանը և ներքին
+                այլ գործընթացների կատարելագործմանը: Իրականացնում եմ քոուչինգ և
+                մենթորություն: «Headway Projects» ՀԿ համահիմնադիրն ու խորհրդի
+                անդամն եմ:
               </p>
 
               {/* CTA Buttons */}
@@ -167,7 +202,7 @@ export default function HomeHy() {
               </div>
             </div>
 
-            {/* Right side - Profile Image */}
+            {/* Right side - Profile Image & Video */}
             <div className="flex justify-center md:justify-start relative">
               {/* Decorative background elements */}
               <div className="absolute -top-4 -right-4 w-72 h-72 bg-primary-200/30 dark:bg-primary-900/20 rounded-full blur-3xl animate-pulse"></div>
@@ -188,6 +223,7 @@ export default function HomeHy() {
                       alt="Արա Միքայելյան - Հոգեբան և Հոգեթերապևտ"
                       fill
                       className="object-cover"
+                      style={{ objectPosition: "50% 100%" }}
                       priority
                       sizes="(max-width: 768px) 100vw, 448px"
                     />
@@ -195,8 +231,89 @@ export default function HomeHy() {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-900/10 via-transparent to-transparent"></div>
                   </div>
                 </div>
+
+                {/* Video Introduction Button */}
+                <button
+                  onClick={() => setIsVideoOpen(true)}
+                  className="mt-6 w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white px-6 py-4 rounded-2xl font-semibold transition-all shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 flex items-center justify-center gap-3 group"
+                >
+                  <svg
+                    className="w-6 h-6 text-primary-600 dark:text-primary-400 transition-transform group-hover:scale-110"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Դիտել Տեսանյութը</span>
+                </button>
               </div>
             </div>
+
+            {/* Video Modal */}
+            {isVideoOpen && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+                onClick={() => setIsVideoOpen(false)}
+              >
+                <div
+                  className="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden shadow-2xl animate-scaleIn"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsVideoOpen(false)}
+                    className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                    aria-label="Close video"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Video Player */}
+                  <div className="relative aspect-video bg-black">
+                    <video
+                      controls
+                      autoPlay
+                      className="w-full h-full"
+                      poster="/images/profile/ara_mikayelyan_headshot.jpg"
+                    >
+                      <source
+                        src="/videos/ara_introduction.mp4"
+                        type="video/mp4"
+                      />
+                      <track
+                        kind="captions"
+                        src="/videos/ara_introduction.vtt"
+                        srcLang="hy"
+                        label="Հայերեն"
+                      />
+                      Ձեր դիտարկիչը չի աջակցում տեսանյութի նվագարկմանը:
+                    </video>
+                  </div>
+
+                  {/* Video Title */}
+                  <div className="p-6 bg-gray-800">
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Բարև, ես Արա Միքայելյանն եմ
+                    </h3>
+                    <p className="text-gray-400">
+                      Իմանալ ավելին իմ մոտեցման և աշխատանքի ոճի մասին
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -209,33 +326,346 @@ export default function HomeHy() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
               Հոգեթերապևտի Մասին
             </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg dark:prose-invert mx-auto">
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Ունենալով 6 տարվա փորձ հոգեբանության մեջ և 3 տարի
-                  մասնագիտանալով որպես հոգեթերապևտ՝ ես նվիրված եմ ստեղծելու
-                  անվտանգ, դատողություններից զերծ տարածք, որտեղ հաճախորդները
-                  կարող են ուսումնասիրել իրենց մտքերը, զգացմունքները և գտնել
-                  իմաստ իրենց փորձառություններում: Իմ մոտեցումը հիմնված է
-                  լոգոթերապիայի և էքզիստենցիալ-հումանիստական հոգեբանության վրա՝
-                  կենտրոնանալով ձեզ օգնելու բացահայտել նպատակը և հաղթահարել
-                  կյանքի դժվարությունները:
+            <div className="max-w-5xl mx-auto">
+              <div className="prose prose-lg dark:prose-invert mx-auto mb-12">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-center">
+                  Որպես հոգեթերապևտ՝ ես կարևորում եմ թերապևտիկ
+                  հարաբերությունների անվտանգությունն ու էթիկան։ Իմ մոտեցումը
+                  հիմնված է հարգանքի և ընդունման վրա, որտեղ չկան պարտադրված
+                  դատողություններ։ Սա յուրօրինակ տարածք է՝ ուղղված մտքերի և
+                  հույզերի համատեղ ուսումնասիրությանը, ինչը թույլ է տալիս ավելի
+                  խորությամբ ճանաչել սեփական փորձառությունները:
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Ես ունեմ Հոգեբանության բակալավրի կոչում Երևանի պետական
-                  համալսարանից և ավարտել եմ առաջադեմ ուսուցում լոգոթերապիայի և
-                  էքզիստենցիալ անալիզի ոլորտում Մոսկվայի հոգեանալիզի
-                  ինստիտուտում: Ես նաև վերապատրաստվել եմ EMDR-ի, գեշտալտ
-                  թերապիայի և անհատականության խանգարումների ուղղությամբ՝ բերելով
-                  ինտեգրատիվ մոտեցում, որը հարմարեցված է յուրաքանչյուր մարդու
-                  եզակի կարիքներին:
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Անկախ նրանից՝ արդյոք դուք հանդիպում եք տագնապի, դեպրեսիայի,
-                  տրավմայի, հարաբերությունների դժվարությունների հետ, կամ փնտրում
-                  եք կյանքի իմաստը՝ ես այստեղ եմ՝ աջակցելու ձեզ ձեր ուղղությամբ
-                  դեպի բուժում, աճ և ավելի լիարժեք կյանք:
-                </p>
+              </div>
+
+              {/* Work Experience */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Աշխատանքային Փորձ
+                </h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Հոգեբան-Խորհրդատու
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Փետրվար 2024 – Մինչ օրս
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Ifeel - Humanising Growth
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Հոգեբան-Հոգեթերապևտ
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        2025 – Մինչ օրս
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      «Այստեղ» Հոգեբանական Կենտրոն
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Հոգեբան-Հոգեթերապևտ
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Սեպտեմբեր 2022 – Մինչ օրս
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Psyguard.me Հոգեբանական Ծառայության Հարթակ
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Կլինիկական Հոգեբան
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Սեպտեմբեր - Նոյեմբեր 2020
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mb-2">
+                      Միքայելյան Վիրաբուժության Ինստիտուտ
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                      Աշխատանք 2020թ. 44-օրյա պատերազմից տուժած զինծառայողների և
+                      նրանց ընտանիքի անդամների հետ
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Հոգեբան-Խորհրդատու
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Օգոստոս 2019 - Սեպտեմբեր 2021
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      «Suggest» Հոգեբանական Արվեստանոց
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Education */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                  Կրթություն
+                </h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Հոգեբանություն, Բակալավրիատ
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2015-2019
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Երևանի Պետական Համալսարան (ԵՊՀ)
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Հետդիպլոմային Կրթություն
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2023-2024
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Կրակովի Յագելոնիան Համալսարան, Լեհաստան
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Պրոֆեսիոնալ Սերտիֆիկացիա
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2022-2025
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Մոսկվայի Փսիխոանալիզի Ինստիտուտ, Ռուսաստան
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Training & Certifications */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  Վերապատրաստումներ և Սերտիֆիկատներ
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Գեշտալտ Հոգեթերապիա
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          62 ժամ | Նոյեմբեր 2018 - Մարտ 2019
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          ԵՊՀ Կիրառական Հոգեբանության Կենտրոն
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Էքզիստենցիալ Հոգեբանություն և Հոգեթերապիա
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          192 ժամ (4 փուլ) | 2020
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          ԵՊՀ Կիրառական Հոգեբանության Կենտրոն
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Կոգնիտիվ Վարքաբանական Թերապիա
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          60 ժամ | 2020
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Բազային Կուրս
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          ESC Կամավորություն
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2023 | Կիելցե, Լեհաստան
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Մշակութային և Կրթական Կենտրոններ
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Բարեկեցության Հմտություններ
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2024 | Գրեմի, Վրաստան
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Երիտասարդական Հետ Աշխատանքում
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Կարիերայի Խորհրդատվություն
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2024 | Պոզնան, Լեհաստան
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Երիտասարդների Կարիերայի Խորհրդատվական Կենտրոն
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          ԱՇԴՎ Թրեյնինգ
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          Սեպտեմբեր 18-20, 2025 | Երևան
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Տեսություն և Կլինիկական Մեթոդներ
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Անձնային Խանգարումներ
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2025 | Երևան
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Սկզբունքներ և Դիագնոստիկա
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow md:col-span-2">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Մարսողական Խնդիրներ Առանց Օրգանական Պատճառի
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2025 | Երևան
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Մտքերի և Մարսողական Համակարգի Երկխոսություն
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mt-12">
@@ -268,293 +698,210 @@ export default function HomeHy() {
           </div>
         </section>
 
-        {/* Services Section */}
-        <section id="services" className="py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Մատուցվող Ծառայություններ
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Համապարփակ թերապևտիկ աջակցություն՝ հարմարեցված ձեր անհատական
-              կարիքներին
-            </p>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Service 1 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Անհատական Թերապիա
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Անհատական նիստեր՝ կենտրոնացած ձեր անձնական նպատակների,
-                  դժվարությունների և մտավոր առողջության կարիքների վրա:
-                </p>
-              </div>
-
-              {/* Service 2 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Օնլայն Հանդիպումներ
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Հարմարավետ և գաղտնի թերապիա ձեր տան հարմարավետությունից՝
-                  տեսազանգի միջոցով:
-                </p>
-              </div>
-
-              {/* Service 3 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Տագնապ և Սթրես
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Սովորեք արդյունավետ հաղթահարման ռազմավարություններ տագնապը,
-                  սթրեսը և ճնշող հույզերը կառավարելու համար:
-                </p>
-              </div>
-
-              {/* Service 4 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Դեպրեսիայի Աջակցություն
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Համակրող խնամք նրանց համար, ովքեր ապրում են դեպրեսիա, ցածր
-                  տրամադրություն կամ մոտիվացիայի կորուստ:
-                </p>
-              </div>
-
-              {/* Service 5 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Անձնական Աճ
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Զարգացրեք ինքնագիտակցությունը, կառուցեք վստահություն և աշխատեք
-                  դեպի ձեր լիարժեք ներուժը:
-                </p>
-              </div>
-
-              {/* Service 6 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Տրավմա և PTSD
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Մասնագիտացված աջակցություն հետտրավմատիկ սթրեսային խանգարման և
-                  կոմպլեքս տրավմայի բուժման համար:
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* Approach Section */}
-        <section
-          id="approach"
-          className="bg-white dark:bg-gray-800 py-16 md:py-24"
-        >
+        <section id="approach" className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Թերապևտիկ Մոտեցում
+              Մասնագիտական Հետաքրքրություններ և Աշխատանքի Շրջանակ
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Ապացույցների վրա հիմնված մեթոդներ՝ հարմարեցված ձեր եզակի
-              ուղղությանը
+              Համապարփակ աջակցություն բազմազան հոգեբանական և հուզական խնդիրների
+              լուծման համար
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {/* Approach 1 */}
+              {/* Card 1: Anxiety & Mood Disorders */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_1.jpg"
-                    alt="Լոգոթերապիա"
+                    alt="Տագնապ և Տրամադրության Խանգարումներ"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 34%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Լոգոթերապիա
+                    Տագնապ և Տրամադրության Խանգարումներ
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Հիմնված Վիկտոր Ֆրանկլի մոտեցման վրա՝ Լոգոթերապիան օգնում է
-                    ձեզ հայտնաբերել իմաստ և նպատակ կյանքում, նույնիսկ դժվար
-                    իրավիճակներում: Այն կենտրոնանում է գտնելու այն, ինչը
-                    դարձնում է ձեր կյանքը արժանի ապրելու և օգտագործել այն որպես
-                    ուժի և մոտիվացիայի աղբյուր:
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Տագնապային սպեկտրի խանգարումներ</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Տրամադրության խանգարումներ</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Դեպրեսիա և բարդացված դեպրեսիա՝ ուղեկցվող սուիցիդալ
+                        մտքերով
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Հույզերի ապրման, վերահսկման և արտահայտման
+                        դժվարություններ
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 2 */}
+              {/* Card 2: Trauma & PTSD */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_2.jpg"
-                    alt="Էքզիստենցիալ-Հումանիստական Թերապիա"
+                    alt="Տրավմա և ՀՏՍԽ"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 44%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Էքզիստենցիալ-Հումանիստական Թերապիա
+                    Տրավմա և Հետտրավմատիկ Սթրես
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Այս մոտեցումը շեշտադրում է անձնական ազատությունը,
-                    ընտրությունը և պատասխանատվությունը: Միասին մենք
-                    ուսումնասիրում ենք կյանքի հիմնարար հարցերը՝ օգնելով ձեզ
-                    կատարել իսկական ընտրություններ և ապրել ավելի լիարժեք,
-                    իմաստալից կյանք՝ համաձայն ձեր արժեքների:
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Հետտրավմատիկ սթրեսային խանգարում (ՀՏՍԽ)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Կոմպլեքս հետտրավմատիկ սթրեսային խանգարում</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Կորստի և վշտի ապրման բարդություններ</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Խրոնիկ մեղքի և ամոթի զգացում</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 3 */}
+              {/* Card 3: Relationships & Identity */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="/images/projects/therapy_3.avif"
-                    alt="EMDR և Տրավմայի Աշխատանք"
+                    src="/images/projects/therapy_3.jpg"
+                    alt="Հարաբերություններ և Ադապտացիա"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 58%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    EMDR և Տրավմայի Աշխատանք
+                    Հարաբերություններ և Ադապտացիա
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Աչքերի շարժման դեսենսիտիզացիան և վերամշակումը (EMDR)
-                    ապացուցված մեթոդ է տրավմատիկ հիշողությունների և
-                    փորձառությունների մշակման համար: Այն օգնում է նվազեցնել
-                    հուզական վիշտը և աջակցում է PTSD-ի, կոմպլեքս տրավմայի և
-                    դժվար կյանքի իրադարձությունների բուժմանը:
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Միջանձնային հարաբերություններում սահմանների խնդիրներ
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Դժվարություններ և կոնֆլիկտներ ներանձնային
+                        հարաբերություններում
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Սահմանային անձնային խանգարում (BPD)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>LGBTQ+ անձանց հետ աշխատանք</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 4 */}
+              {/* Card 4: Meaning & Personal Growth */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="/images/projects/therapy_4.avif"
-                    alt="Ինտեգրատիվ Մոտեցում"
+                    src="/images/projects/therapy_4.jpg"
+                    alt="Իմաստ և Անձնական Աճ"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 12%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Ինտեգրատիվ Մոտեցում
+                    Իմաստ և Անձնական Աճ
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Ես համադրում եմ տեխնիկաներ գեշտալտ թերապիայից, էքզիստենցիալ
-                    հոգեբանությունից և այլ ապացույցների վրա հիմնված մեթոդներից՝
-                    ստեղծելու անհատականացված բուժման պլան: Յուրաքանչյուր մարդ
-                    եզակի է, և ձեր թերապիան պետք է հարմարեցված լինի ձեր կոնկրետ
-                    կարիքներին և նպատակներին:
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Կյանքի իմաստի կորուստ</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Անձնային աճի և ադապտացիայի խնդիրներ</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Ինքնագնահատականի խնդիրներ</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Հոգեսոմատիկ խնդիրներ</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -622,7 +969,6 @@ export default function HomeHy() {
                       </a>
                     </div>
                   </div>
-
                   {/* Phone */}
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
@@ -649,7 +995,6 @@ export default function HomeHy() {
                       </p>
                     </div>
                   </div>
-
                   {/* Location */}
                   <div className="flex items-start">
                     <div className="flex-shrink-0">
@@ -714,8 +1059,12 @@ export default function HomeHy() {
                           className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
                           aria-label="LinkedIn"
                         >
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                           </svg>
                         </a>
                         <a
@@ -725,8 +1074,12 @@ export default function HomeHy() {
                           className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
                           aria-label="Instagram"
                         >
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
                           </svg>
                         </a>
                         <a
@@ -736,13 +1089,18 @@ export default function HomeHy() {
                           className="text-gray-600 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-400 transition-colors"
                           aria-label="Facebook"
                         >
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                           </svg>
                         </a>
                       </div>
                     </div>
-                  </div>                </div>
+                  </div>{" "}
+                </div>
 
                 <div className="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
                   <p className="text-center text-gray-600 dark:text-gray-400 mb-6">

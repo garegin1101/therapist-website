@@ -190,6 +190,7 @@ export default function HomeRu() {
                       alt="Ара Микаелян - Психолог и Психотерапевт"
                       fill
                       className="object-cover"
+                      style={{ objectPosition: "50% 100%" }}
                       priority
                       sizes="(max-width: 768px) 100vw, 448px"
                     />
@@ -464,6 +465,7 @@ export default function HomeRu() {
                     alt="Логотерапия"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 34%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -490,6 +492,7 @@ export default function HomeRu() {
                     alt="Экзистенциально-гуманистическая терапия"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 44%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -512,10 +515,11 @@ export default function HomeRu() {
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="/images/projects/therapy_3.avif"
+                    src="/images/projects/therapy_3.jpg"
                     alt="EMDR и работа с травмой"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 58%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
@@ -538,10 +542,11 @@ export default function HomeRu() {
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
-                    src="/images/projects/therapy_4.avif"
+                    src="/images/projects/therapy_4.jpg"
                     alt="Интегративный подход"
                     fill
                     className="object-cover"
+                    style={{ objectPosition: "50% 12%" }}
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
