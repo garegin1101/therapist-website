@@ -596,7 +596,7 @@ export default function HomeHy() {
                           2024 | Գրեմի, Վրաստան
                         </p>
                         <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-                          Երիտասարդական Հետ Աշխատանքում
+                          Երիտասարդների Հետ Աշխատանքում
                         </p>
                       </div>
                     </div>
@@ -704,10 +704,6 @@ export default function HomeHy() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
               Մասնագիտական Հետաքրքրություններ և Աշխատանքի Շրջանակ
             </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Համապարփակ աջակցություն բազմազան հոգեբանական և հուզական խնդիրների
-              լուծման համար
-            </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
               {/* Card 1: Anxiety & Mood Disorders */}
