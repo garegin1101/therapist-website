@@ -864,7 +864,7 @@ export default function HomeHy() {
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_4.jpg"
-                    alt="Իմաստ և Անձնական Աճ"
+                    alt="Կյանքի իմաստ և Անձնային Աճ"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 12%" }}
@@ -874,7 +874,7 @@ export default function HomeHy() {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Իմաստ և Անձնական Աճ
+                    Կյանքի իմաստ և Անձնային Աճ
                   </h3>
                   <ul className="space-y-2 text-gray-700 dark:text-gray-300">
                     <li className="flex items-start">
