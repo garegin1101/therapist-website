@@ -2,15 +2,19 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <>
       <Head>
         <title>
-          Ara Miqayelyan | Psychologist & Therapist in Yerevan, Armenia
+          Ara Miqayelyan | Psychologist & Mental Health Specialist in Yerevan,
+          Armenia
         </title>
         <meta
           name="description"
@@ -19,6 +23,33 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <style jsx global>{`
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.95);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+        .animate-fadeIn {
+          animation: fadeIn 0.2s ease-out;
+        }
+        .animate-scaleIn {
+          animation: scaleIn 0.3s ease-out;
+        }
+      `}</style>
 
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
         {/* Navigation */}
@@ -136,7 +167,7 @@ export default function Home() {
                 Ara Miqayelyan
               </h1>
               <p className="text-xl md:text-2xl text-primary-600 dark:text-primary-400 mb-4 font-medium">
-                Psychologist / Therapist
+                Psychologist / Mental Health Specialist
               </p>
               <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
                 Based in Yerevan, Armenia
@@ -144,11 +175,17 @@ export default function Home() {
               <p
                 className={`${inter.className} text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed`}
               >
-                I provide compassionate, evidence-based therapy to help you
-                navigate life's challenges. With a client-centered approach
-                integrating cognitive-behavioral therapy (CBT) and psychodynamic
-                techniques, I support individuals in achieving emotional
-                well-being, personal growth, and meaningful change.
+                Hello, I am Ara Mikaelyan—a certified psychologist, mental
+                health counselor, and psychoeducation specialist. I am a member
+                of the Logotherapy and Existential Analysis Association and the
+                EMDR Armenia Association. I serve as a facilitator for retreat
+                groups, where we provide a confidential environment for both
+                groups and individuals. Additionally, I am involved in
+                international youth programs focused on developing soft skills,
+                adaptation, professional orientation, and the enhancement of
+                internal personal processes. I also provide coaching and
+                mentoring services. I am the co-founder and a board member of
+                the 'Headway Projects' NGO.
               </p>
 
               {/* CTA Buttons */}
@@ -197,8 +234,87 @@ export default function Home() {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-900/10 via-transparent to-transparent"></div>
                   </div>
                 </div>
+                {/* Video Introduction Button */}
+                <button
+                  onClick={() => setIsVideoOpen(true)}
+                  className="mt-6 w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white px-6 py-4 rounded-2xl font-semibold transition-all shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 flex items-center justify-center gap-3 group"
+                >
+                  <svg
+                    className="w-6 h-6 text-primary-600 dark:text-primary-400 transition-transform group-hover:scale-110"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Watch Video</span>
+                </button>
               </div>
             </div>
+            {/* Video Modal */}
+            {isVideoOpen && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+                onClick={() => setIsVideoOpen(false)}
+              >
+                <div
+                  className="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden shadow-2xl animate-scaleIn"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsVideoOpen(false)}
+                    className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                    aria-label="Close video"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Video Player */}
+                  <div className="relative aspect-video bg-black">
+                    <video
+                      controls
+                      autoPlay
+                      className="w-full h-full"
+                      poster="/images/profile/ara_mikayelyan_headshot.jpg"
+                    >
+                      <source
+                        src="/videos/ara_introduction.mp4"
+                        type="video/mp4"
+                      />
+                      <track
+                        kind="captions"
+                        src="/videos/ara_introduction.vtt"
+                        srcLang="hy"
+                        label="Հայերեն"
+                      />
+                      Your browser does not support video playback.
+                    </video>
+                  </div>
+
+                  {/* Video Title */}
+                  <div className="p-6 bg-gray-800">
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Hey, I'm Ara Mikayelyan
+                    </h3>
+                    <p className="text-gray-400">
+                      Learn more about my approach and work style
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -211,31 +327,346 @@ export default function Home() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
               About the Therapist
             </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg dark:prose-invert mx-auto">
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  With 6 years of experience in psychology and 3 years
-                  specializing as a psychotherapist, I am dedicated to creating
-                  a safe, non-judgmental space where clients can explore their
-                  thoughts, feelings, and find meaning in their experiences. My
-                  approach is rooted in Logotherapy and Existential-Humanistic
-                  psychology, focusing on helping you discover purpose and
-                  overcome life's challenges.
+            <div className="max-w-5xl mx-auto">
+              <div className="prose prose-lg dark:prose-invert mx-auto mb-12">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-center">
+                  As a psychotherapist, I prioritize the safety and ethics of
+                  the therapeutic relationship. My approach is based on respect
+                  and acceptance, where there are no imposed judgments. This is
+                  a unique space aimed at the joint exploration of thoughts and
+                  emotions, allowing for a deeper understanding of one's own
+                  experiences.
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  I hold a Bachelor's degree in Psychology from Yerevan State
-                  University and completed advanced training in Logotherapy and
-                  Existential Analysis at the Moscow Institute of
-                  Psychoanalysis. I've also trained in EMDR, Gestalt therapy,
-                  and personality disorders, bringing an integrative approach
-                  tailored to each individual's unique needs.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Whether you're dealing with anxiety, depression, trauma,
-                  relationship challenges, or searching for life's meaning, I'm
-                  here to support you on your journey toward healing, growth,
-                  and a more fulfilling life.
-                </p>
+              </div>
+
+              {/* Work Experience */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Work Experience
+                </h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Psychologist-Counselor
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        February 2024 – Present
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Ifeel - Humanising Growth
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Psychologist-Psychotherapist
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        2025 – Present
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      "Aystegh" Psychological Center
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Psychologist-Psychotherapist
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        September 2022 – Present
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Psyguard.me Psychological Service Platform
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Clinical Psychologist
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        September - November 2020
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mb-2">
+                      Mikaelyan Institute of Surgery
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                      Work with military personnel affected by the 2020 44-day
+                      war and their family members
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Psychologist-Counselor
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        August 2019 - September 2021
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      "Suggest" Psychological Workshop
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Education */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                  Education
+                </h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Psychology, Bachelor's Degree
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2015-2019
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Yerevan State University (YSU)
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Postgraduate Education
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2023-2024
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Jagiellonian University in Krakow, Poland
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Professional Certification
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2022-2025
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Moscow Institute of Psychoanalysis, Russia
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Training & Certifications */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  Trainings and Certificates
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Gestalt Psychotherapy
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          62 hours | November 2018 - March 2019
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          YSU Center for Applied Psychology
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Existential Psychology and Psychotherapy
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          192 hours (4 stages) | 2020
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          YSU Center for Applied Psychology
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Cognitive Behavioral Therapy
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          60 hours | 2020
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Basic Course
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          ESC Volunteering
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2023 | Kielce, Poland
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Cultural and Educational Centers
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Well-being Skills
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2024 | Gremi, Georgia
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Working with Youth
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Career Counseling
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2024 | Poznań, Poland
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Youth Career Counseling Center
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          EMDR Training
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          September 18-20, 2025 | Yerevan
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Theory and Clinical Methods
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Personality Disorders
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2025 | Yerevan
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Principles and Diagnostics
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow md:col-span-2">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Digestive Issues Without Organic Cause
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2025 | Yerevan
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Dialogue Between Thoughts and the Digestive System
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mt-12">
@@ -244,7 +675,7 @@ export default function Home() {
                     6
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Years Experience
+                    Years of Experience
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -252,7 +683,7 @@ export default function Home() {
                     3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Years as Psychotherapist
+                    Years as a Psychotherapist
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -260,7 +691,7 @@ export default function Home() {
                     3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Languages Spoken
+                    Languages
                   </div>
                 </div>
               </div>
@@ -269,293 +700,212 @@ export default function Home() {
         </section>
 
         {/* Services Section */}
-        <section id="services" className="py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Services Offered
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Comprehensive therapeutic support tailored to your individual
-              needs
-            </p>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Service 1 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Individual Therapy
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  One-on-one sessions focused on your personal goals,
-                  challenges, and mental health needs.
-                </p>
-              </div>
-
-              {/* Service 2 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Couples Therapy
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Strengthen your relationship, improve communication, and
-                  resolve conflicts together.
-                </p>
-              </div>
-
-              {/* Service 3 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Online Sessions
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Convenient and confidential therapy from the comfort of your
-                  own space via video call.
-                </p>
-              </div>
-
-              {/* Service 4 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Anxiety & Stress
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Learn effective coping strategies to manage anxiety, stress,
-                  and overwhelming emotions.
-                </p>
-              </div>
-
-              {/* Service 5 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Depression Support
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Compassionate care for those experiencing depression, low
-                  mood, or loss of motivation.
-                </p>
-              </div>
-
-              {/* Service 6 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Personal Growth
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Develop self-awareness, build confidence, and work toward your
-                  full potential.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
 
         {/* Approach Section */}
-        <section
-          id="approach"
-          className="bg-white dark:bg-gray-800 py-16 md:py-24"
-        >
+        <section id="approach" className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Therapeutic Approach
+              Approach
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Evidence-based methods tailored to your unique journey
+              Professional Interests and Scope of Work
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {/* Approach 1 */}
+              {/* Card 1: Anxiety & Mood Disorders */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_1.jpg"
-                    alt="Logotherapy approach"
+                    alt="Anxiety and Mood Disorders"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 34%" }}
-                    sizes="(max-width: 768px) 100vw, 600px"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Logotherapy
+                    Anxiety and Mood Disorders
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Based on Viktor Frankl's approach, Logotherapy helps you
-                    discover meaning and purpose in life, even in challenging
-                    circumstances. It focuses on finding what makes your life
-                    worth living and using that as a source of strength and
-                    motivation.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Anxiety spectrum disorders</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Mood disorders</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Depression and complex depression accompanied by
+                        suicidal ideation
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Difficulties in experiencing, controlling, and
+                        expressing emotions
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 2 */}
+              {/* Card 2: Trauma & PTSD */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_2.jpg"
-                    alt="Existential-Humanistic therapy"
+                    alt="Trauma and PTSD"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 44%" }}
-                    sizes="(max-width: 768px) 100vw, 600px"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Existential-Humanistic Therapy
+                    Trauma and Post-Traumatic Stress
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    This approach emphasizes personal freedom, choice, and
-                    responsibility. Together, we explore life's fundamental
-                    questions, helping you make authentic choices and live a
-                    more fulfilling, meaningful life aligned with your values.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Post-Traumatic Stress Disorder (PTSD)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Complex Post-Traumatic Stress Disorder (C-PTSD)
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Difficulties in processing loss and grief</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Chronic feelings of guilt and shame</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 3 */}
+              {/* Card 3: Relationships & Identity */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_3.jpg"
-                    alt="EMDR and trauma work"
+                    alt="Relationships and Adaptation"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 58%" }}
-                    sizes="(max-width: 768px) 100vw, 600px"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    EMDR & Trauma Work
+                    Relationships and Adaptation
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Eye Movement Desensitization and Reprocessing (EMDR) is an
-                    evidence-based method for processing traumatic memories and
-                    experiences. It helps reduce emotional distress and supports
-                    healing from PTSD, complex trauma, and difficult life
-                    events.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Boundary issues in interpersonal relationships
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Difficulties and conflicts in intrapersonal
+                        relationships
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Borderline Personality Disorder (BPD)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Working with LGBTQ+ individuals</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 4 */}
+              {/* Card 4: Meaning & Personal Growth */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_4.jpg"
-                    alt="Integrative approach"
+                    alt="Meaning of Life and Personal Growth"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 12%" }}
-                    sizes="(max-width: 768px) 100vw, 600px"
+                    sizes="(max-width: 768px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Integrative Approach
+                    Meaning of Life and Personal Growth
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    I combine techniques from Gestalt therapy, existential
-                    psychology, and other evidence-based methods to create a
-                    personalized treatment plan. Each person is unique, and your
-                    therapy should be tailored to your specific needs and goals.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Loss of meaning in life</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Issues with personal growth and adaptation</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Self-esteem issues</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Psychosomatic issues</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -645,9 +995,27 @@ export default function Home() {
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                         Phone
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        +374 94 164634
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <p className="text-gray-600 dark:text-gray-400">
+                          +374 94 164634
+                        </p>
+                        <a
+                          href="https://wa.me/37494164634"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-600 hover:text-green-700 dark:text-green-500 dark:hover:text-green-400 transition-colors"
+                          aria-label="Contact via WhatsApp"
+                          title="Message on WhatsApp"
+                        >
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
 

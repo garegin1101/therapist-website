@@ -2,10 +2,13 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function HomeRu() {
+  const [isVideoOpen, setIsVideoOpen] = useState(false);
+
   return (
     <>
       <Head>
@@ -144,12 +147,18 @@ export default function HomeRu() {
               <p
                 className={`${inter.className} text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed`}
               >
-                Я предоставляю сострадательную, основанную на доказательствах
-                терапию, чтобы помочь вам преодолеть жизненные трудности.
-                Используя клиент-ориентированный подход с интеграцией
-                когнитивно-поведенческой терапии (КПТ) и психодинамических
-                техник, я помогаю людям достичь эмоционального благополучия,
-                личностного роста и значимых изменений.
+                Здравствуйте! Я Ара Микаелян, дипломированный психолог,
+                консультант в области психического здоровья и специалист по
+                психообразованию. Являюсь членом Ассоциации логотерапии и
+                экзистенциального анализа, а также Ассоциации ДПДГ Армении. Я
+                выступаю в роли ведущего ретрит-групп, где мы создаем
+                конфиденциальную среду как для групповой, так и для
+                индивидуальной работы. Кроме того, участвую в международных
+                молодежных программах, направленных на развитие гибких навыков
+                (soft skills), адаптацию, профориентацию и совершенствование
+                внутренних личностных процессов. Также предоставляю услуги
+                коучинга и менторства. Являюсь соучредителем и членом правления
+                общественной организации "Headway Projects" НКО.
               </p>
 
               {/* CTA Buttons */}
@@ -198,8 +207,87 @@ export default function HomeRu() {
                     <div className="absolute inset-0 bg-gradient-to-t from-primary-900/10 via-transparent to-transparent"></div>
                   </div>
                 </div>
+                {/* Video Introduction Button */}
+                <button
+                  onClick={() => setIsVideoOpen(true)}
+                  className="mt-6 w-full bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-900 dark:text-white px-6 py-4 rounded-2xl font-semibold transition-all shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 flex items-center justify-center gap-3 group"
+                >
+                  <svg
+                    className="w-6 h-6 text-primary-600 dark:text-primary-400 transition-transform group-hover:scale-110"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M8 5v14l11-7z" />
+                  </svg>
+                  <span>Смотреть видео</span>
+                </button>
               </div>
             </div>
+            {/* Video Modal */}
+            {isVideoOpen && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn"
+                onClick={() => setIsVideoOpen(false)}
+              >
+                <div
+                  className="relative w-full max-w-4xl bg-gray-900 rounded-2xl overflow-hidden shadow-2xl animate-scaleIn"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  {/* Close Button */}
+                  <button
+                    onClick={() => setIsVideoOpen(false)}
+                    className="absolute top-4 right-4 z-10 bg-black/50 hover:bg-black/70 text-white rounded-full p-2 transition-colors"
+                    aria-label="Закрыть видео"
+                  >
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </button>
+
+                  {/* Video Player */}
+                  <div className="relative aspect-video bg-black">
+                    <video
+                      controls
+                      autoPlay
+                      className="w-full h-full"
+                      poster="/images/profile/ara_mikayelyan_headshot.jpg"
+                    >
+                      <source
+                        src="/videos/ara_introduction.mp4"
+                        type="video/mp4"
+                      />
+                      <track
+                        kind="captions"
+                        src="/videos/ara_introduction.vtt"
+                        srcLang="hy"
+                        label="Հայերեն"
+                      />
+                      Ваш браузер не поддерживает воспроизведение видео.
+                    </video>
+                  </div>
+
+                  {/* Video Title */}
+                  <div className="p-6 bg-gray-800">
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      Привет, я Ара Микаелян
+                    </h3>
+                    <p className="text-gray-400">
+                      Узнайте больше о моем подходе и стиле работы
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </section>
 
@@ -212,33 +300,345 @@ export default function HomeRu() {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
               О терапевте
             </h2>
-            <div className="max-w-4xl mx-auto">
-              <div className="prose prose-lg dark:prose-invert mx-auto">
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  С 6-летним опытом работы в психологии и 3-летней
-                  специализацией в качестве психотерапевта, я стремлюсь создать
-                  безопасное, непредвзятое пространство, где клиенты могут
-                  исследовать свои мысли, чувства и находить смысл в своем
-                  опыте. Мой подход основан на логотерапии и
-                  экзистенциально-гуманистической психологии, направленный на
-                  то, чтобы помочь вам открыть цель и преодолеть жизненные
-                  трудности.
+            <div className="max-w-5xl mx-auto">
+              <div className="prose prose-lg dark:prose-invert mx-auto mb-12">
+                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed text-center">
+                  Как психотерапевт, я ставлю в приоритет безопасность и этику
+                  терапевтических отношений. Мой подход основан на уважении и
+                  принятии, где нет места навязанным суждениям. Это уникальное
+                  пространство, направленное на совместное исследование мыслей и
+                  эмоций, позволяющее глубже понять собственный опыт.
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 mb-6 leading-relaxed">
-                  Я имею степень бакалавра психологии Ереванского
-                  государственного университета и прошел продвинутую подготовку
-                  по логотерапии и экзистенциальному анализу в Московском
-                  институте психоанализа. Я также обучался EMDR,
-                  гештальт-терапии и расстройствам личности, применяя
-                  интегративный подход, адаптированный к уникальным потребностям
-                  каждого человека.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                  Независимо от того, сталкиваетесь ли вы с тревогой,
-                  депрессией, травмой, проблемами в отношениях или ищете смысл
-                  жизни, я здесь, чтобы поддержать вас на вашем пути к
-                  исцелению, росту и более полноценной жизни.
-                </p>
+              </div>
+
+              {/* Work Experience */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
+                  Опыт работы
+                </h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Психолог-консультант
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Февраль 2024 – Настоящее время
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Ifeel - Humanising Growth
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Психолог-психотерапевт
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        2025 – Настоящее время
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Психологический центр «Айстех» (Aystegh)
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Психолог-психотерапевт
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Сентябрь 2022 – Настоящее время
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Платформа психологических услуг Psyguard.me
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Клинический психолог
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Сентябрь - Ноябрь 2020
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300 mb-2">
+                      Институт хирургии имени Микаеляна
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 italic">
+                      Работа с военнослужащими, пострадавшими в ходе 44-дневной
+                      войны 2020 года, и членами их семей
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Психолог-консультант
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap ml-4">
+                        Август 2019 - Сентябрь 2021
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Центр психологической практики «Suggest»
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Education */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
+                    />
+                  </svg>
+                  Образование
+                </h3>
+                <div className="space-y-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Психология, Бакалавриат
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2015-2019
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Ереванский государственный университет (ЕГУ)
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Последипломное образование
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2023-2024
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Ягеллонский университет в Кракове, Польша
+                    </p>
+                  </div>
+                  <div className="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border-l-4 border-primary-600">
+                    <div className="flex justify-between items-start mb-2">
+                      <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                        Профессиональная сертификация
+                      </h4>
+                      <span className="text-sm text-gray-600 dark:text-gray-400">
+                        2022-2025
+                      </span>
+                    </div>
+                    <p className="text-gray-700 dark:text-gray-300">
+                      Московский институт психоанализа, Россия
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Training & Certifications */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center">
+                  <svg
+                    className="w-7 h-7 text-primary-600 dark:text-primary-400 mr-3"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  Курсы и сертификаты
+                </h3>
+                <div className="grid md:grid-cols-2 gap-4">
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Гештальт-психотерапия
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          62 часа | Ноябрь 2018 - Март 2019
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Центр прикладной психологии ЕГУ
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Экзистенциальная психология и психотерапия
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          192 часа (4 этапа) | 2020
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Центр прикладной психологии ЕГУ
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Когнитивно-поведенческая терапия
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          60 часов | 2020
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Базовый курс
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Волонтерство ESC
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2023 | Кельце, Польша
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Культурно-образовательные центры
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Навыки благополучия (Well-being Skills)
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2024 | Греми, Грузия
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Работа с молодежью
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Карьерное консультирование
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2024 | Познань, Польша
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Центр карьерного консультирования для молодежи
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Обучение по ДПДГ
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          18-20 сентября 2025 | Ереван
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Теория и клинические методы
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Расстройства личности
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2025 | Ереван
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Принципы и диагностика
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="bg-white dark:bg-gray-700/30 p-5 rounded-lg border border-gray-200 dark:border-gray-600 hover:shadow-md transition-shadow md:col-span-2">
+                    <div className="flex items-start">
+                      <div className="flex-shrink-0 w-2 h-2 bg-primary-600 rounded-full mt-2 mr-3"></div>
+                      <div>
+                        <p className="text-sm font-semibold text-gray-900 dark:text-white mb-1">
+                          Проблемы пищеварения без органической причины
+                        </p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">
+                          2025 | Ереван
+                        </p>
+                        <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
+                          Диалог между мыслями и пищеварительной системой
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="grid md:grid-cols-3 gap-6 mt-12">
@@ -247,7 +647,7 @@ export default function HomeRu() {
                     6
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Лет опыта
+                    Лет общего опыта
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -255,7 +655,7 @@ export default function HomeRu() {
                     3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Года психотерапевтом
+                    Года психотерапевтической практики
                   </div>
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
@@ -263,206 +663,31 @@ export default function HomeRu() {
                     3
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
-                    Языка общения
+                    Языка консультирования
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Services Section */}
-        <section id="services" className="py-16 md:py-24">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Предоставляемые услуги
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Комплексная терапевтическая поддержка, адаптированная к вашим
-              индивидуальным потребностям
-            </p>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {/* Service 1 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Индивидуальная терапия
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Индивидуальные сессии, сосредоточенные на ваших личных целях,
-                  проблемах и потребностях в области психического здоровья.
-                </p>
-              </div>
-
-              {/* Service 2 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Терапия пар
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Укрепите отношения, улучшите общение и разрешите конфликты
-                  вместе.
-                </p>
-              </div>
-
-              {/* Service 3 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Онлайн-сессии
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Удобная и конфиденциальная терапия в комфортной обстановке
-                  через видеозвонок.
-                </p>
-              </div>
-
-              {/* Service 4 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Тревога и стресс
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Изучите эффективные стратегии совладания для управления
-                  тревогой, стрессом и подавляющими эмоциями.
-                </p>
-              </div>
-
-              {/* Service 5 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Поддержка при депрессии
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Сострадательная помощь тем, кто испытывает депрессию,
-                  подавленное настроение или потерю мотивации.
-                </p>
-              </div>
-
-              {/* Service 6 */}
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow border border-gray-100 dark:border-gray-700">
-                <div className="w-12 h-12 bg-primary-100 dark:bg-primary-900/30 rounded-lg flex items-center justify-center mb-4">
-                  <svg
-                    className="w-6 h-6 text-primary-600 dark:text-primary-400"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 10V3L4 14h7v7l9-11h-7z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                  Личностный рост
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  Развивайте самосознание, укрепляйте уверенность и работайте
-                  над раскрытием своего полного потенциала.
-                </p>
               </div>
             </div>
           </div>
         </section>
 
         {/* Approach Section */}
-        <section
-          id="approach"
-          className="bg-white dark:bg-gray-800 py-16 md:py-24"
-        >
+        <section id="approach" className="py-16 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center">
-              Терапевтический подход
+              Подход
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400 text-center mb-12 max-w-2xl mx-auto">
-              Методы, основанные на доказательствах, адаптированные к вашему
-              уникальному пути
+              Профессиональные интересы и сфера деятельности
             </p>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {/* Approach 1 */}
+              {/* Card 1: Anxiety & Mood Disorders */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_1.jpg"
-                    alt="Логотерапия"
+                    alt="Тревожные расстройства и расстройства настроения"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 34%" }}
@@ -472,24 +697,50 @@ export default function HomeRu() {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Логотерапия
+                    Тревожные расстройства и расстройства настроения
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Основанная на подходе Виктора Франкла, логотерапия помогает
-                    вам открыть смысл и цель жизни даже в сложных
-                    обстоятельствах. Она фокусируется на поиске того, что делает
-                    вашу жизнь достойной того, чтобы жить, и использовании этого
-                    как источника силы и мотивации.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Расстройства тревожного спектра</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Расстройства настроения (аффективные расстройства)
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Депрессия и осложненная депрессия, сопровождающаяся
+                        суицидальными мыслями
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Трудности в проживании, контроле и выражении эмоций
+                      </span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 2 */}
+              {/* Card 2: Trauma & PTSD */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_2.jpg"
-                    alt="Экзистенциально-гуманистическая терапия"
+                    alt="Травма и ПТСР"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 44%" }}
@@ -499,24 +750,48 @@ export default function HomeRu() {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Экзистенциально-гуманистическая терапия
+                    Травма и посттравматический стресс
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Этот подход подчеркивает личную свободу, выбор и
-                    ответственность. Вместе мы исследуем фундаментальные
-                    жизненные вопросы, помогая вам делать подлинный выбор и жить
-                    более полноценной, осмысленной жизнью в соответствии с
-                    вашими ценностями.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Посттравматическое стрессовое расстройство (ПТСР)
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Комплексное посттравматическое стрессовое расстройство
+                        (К-ПТСР)
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Трудности в проживании утраты и горя</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Хроническое чувство вины и стыда</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 3 */}
+              {/* Card 3: Relationships & Identity */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_3.jpg"
-                    alt="EMDR и работа с травмой"
+                    alt="Отношения и адаптация"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 58%" }}
@@ -526,24 +801,47 @@ export default function HomeRu() {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    EMDR и работа с травмой
+                    Отношения и адаптация
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Десенсибилизация и переработка движениями глаз (EMDR) — это
-                    научно обоснованный метод обработки травматических
-                    воспоминаний и переживаний. Он помогает уменьшить
-                    эмоциональный дистресс и поддерживает исцеление от ПТСР,
-                    сложной травмы и трудных жизненных событий.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Проблемы с личными границами в межличностных отношениях
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>
+                        Сложности и конфликты во внутриличностных отношениях
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Пограничное расстройство личности (ПРЛ)</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Работа с представителями LGBTQ+ сообщества</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
 
-              {/* Approach 4 */}
+              {/* Card 4: Meaning & Personal Growth */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700">
                 <div className="relative h-48 overflow-hidden">
                   <Image
                     src="/images/projects/therapy_4.jpg"
-                    alt="Интегративный подход"
+                    alt="Смысл жизни и личностный рост"
                     fill
                     className="object-cover"
                     style={{ objectPosition: "50% 12%" }}
@@ -553,15 +851,34 @@ export default function HomeRu() {
                 </div>
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-4">
-                    Интегративный подход
+                    Смысл жизни и личностный рост
                   </h3>
-                  <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    Я объединяю техники гештальт-терапии, экзистенциальной
-                    психологии и других научно обоснованных методов для создания
-                    персонализированного плана лечения. Каждый человек уникален,
-                    и ваша терапия должна быть адаптирована к вашим конкретным
-                    потребностям и целям.
-                  </p>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Утрата смысла жизни</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Проблемы личностного роста и адаптации</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Проблемы с самооценкой</span>
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-primary-600 dark:text-primary-400 mr-2">
+                        •
+                      </span>
+                      <span>Психосоматические проблемы</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -650,9 +967,27 @@ export default function HomeRu() {
                       <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
                         Телефон
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-400">
-                        +374 94 164634
-                      </p>
+                      <div className="flex items-center gap-3">
+                        <p className="text-gray-600 dark:text-gray-400">
+                          +374 94 164634
+                        </p>
+                        <a
+                          href="https://wa.me/37494164634"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-green-600 hover:text-green-700 dark:text-green-500 dark:hover:text-green-400 transition-colors"
+                          aria-label="Contact via WhatsApp"
+                          title="Message on WhatsApp"
+                        >
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
+                          </svg>
+                        </a>
+                      </div>
                     </div>
                   </div>
                   {/* Location */}
