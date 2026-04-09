@@ -21,6 +21,28 @@ export default function Home() {
           content="Professional psychological therapy services in Yerevan. Specialized in anxiety, depression, relationships, and personal growth."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="Ara Miqayelyan, psychologist Yerevan, therapist Armenia, mental health, anxiety, depression, therapy"
+        />
+        <link rel="canonical" href="https://aramiqayelyan.com/" />
+        {/* hreflang: tells Google which page serves which language */}
+        <link rel="alternate" hreflang="en" href="https://aramiqayelyan.com/" />
+        <link
+          rel="alternate"
+          hreflang="hy"
+          href="https://aramiqayelyan.com/hy"
+        />
+        <link
+          rel="alternate"
+          hreflang="ru"
+          href="https://aramiqayelyan.com/ru"
+        />
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href="https://aramiqayelyan.com/"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -672,7 +694,7 @@ export default function Home() {
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    6
+                    8
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Years of Experience
@@ -680,7 +702,7 @@ export default function Home() {
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    3
+                    5
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Years as a Psychotherapist

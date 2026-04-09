@@ -18,6 +18,28 @@ export default function HomeHy() {
           content="Մասնագիտական հոգեթերապևտիկ ծառայություններ Երևանում: Մասնագիտացված տագնապի, դեպրեսիայի, հարաբերությունների և անձնական աճի հարցերում:"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="Արա Միքայելյան, հոգեբան Երևան, հոգեթերապևտ Հայաստան, հոգեկան առողջություն, տագնապ, դեպրեսիա, թերապիա"
+        />
+        <link rel="canonical" href="https://aramiqayelyan.com/hy" />
+        {/* hreflang: tells Google which page serves which language */}
+        <link rel="alternate" hreflang="en" href="https://aramiqayelyan.com/" />
+        <link
+          rel="alternate"
+          hreflang="hy"
+          href="https://aramiqayelyan.com/hy"
+        />
+        <link
+          rel="alternate"
+          hreflang="ru"
+          href="https://aramiqayelyan.com/ru"
+        />
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href="https://aramiqayelyan.com/"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -671,7 +693,7 @@ export default function HomeHy() {
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    6
+                    8
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Տարի Փորձ
@@ -679,7 +701,7 @@ export default function HomeHy() {
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    3
+                    5
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Տարի Որպես Հոգեթերապևտ

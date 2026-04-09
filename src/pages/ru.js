@@ -20,6 +20,28 @@ export default function HomeRu() {
           content="Профессиональные психотерапевтические услуги в Ереване. Специализация на тревоге, депрессии, отношениях и личностном росте."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="Ара Микаелян, психолог Ереван, психотерапевт Армения, психическое здоровье, тревога, депрессия, терапия"
+        />
+        <link rel="canonical" href="https://aramiqayelyan.com/ru" />
+        {/* hreflang: tells Google which page serves which language */}
+        <link rel="alternate" hreflang="en" href="https://aramiqayelyan.com/" />
+        <link
+          rel="alternate"
+          hreflang="hy"
+          href="https://aramiqayelyan.com/hy"
+        />
+        <link
+          rel="alternate"
+          hreflang="ru"
+          href="https://aramiqayelyan.com/ru"
+        />
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href="https://aramiqayelyan.com/"
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -644,7 +666,7 @@ export default function HomeRu() {
               <div className="grid md:grid-cols-3 gap-6 mt-12">
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    6
+                    8
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Лет общего опыта
@@ -652,7 +674,7 @@ export default function HomeRu() {
                 </div>
                 <div className="bg-primary-50 dark:bg-gray-700 p-6 rounded-xl">
                   <div className="text-3xl font-bold text-primary-600 dark:text-primary-400 mb-2">
-                    3
+                    5
                   </div>
                   <div className="text-gray-700 dark:text-gray-300 font-medium">
                     Года психотерапевтической практики
