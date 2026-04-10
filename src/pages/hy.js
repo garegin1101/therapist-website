@@ -22,23 +22,27 @@ export default function HomeHy() {
           name="keywords"
           content="Արա Միքայելյան, հոգեբան Երևան, հոգեթերապևտ Հայաստան, հոգեկան առողջություն, տագնապ, դեպրեսիա, թերապիա"
         />
-        <link rel="canonical" href="https://aramiqayelyan.com/hy" />
+        <link rel="canonical" href="https://ara.miqayelyan.com/hy" />
         {/* hreflang: tells Google which page serves which language */}
-        <link rel="alternate" hreflang="en" href="https://aramiqayelyan.com/" />
+        <link
+          rel="alternate"
+          hreflang="en"
+          href="https://ara.miqayelyan.com/"
+        />
         <link
           rel="alternate"
           hreflang="hy"
-          href="https://aramiqayelyan.com/hy"
+          href="https://ara.miqayelyan.com/hy"
         />
         <link
           rel="alternate"
           hreflang="ru"
-          href="https://aramiqayelyan.com/ru"
+          href="https://ara.miqayelyan.com/ru"
         />
         <link
           rel="alternate"
           hreflang="x-default"
-          href="https://aramiqayelyan.com/"
+          href="https://ara.miqayelyan.com/"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>

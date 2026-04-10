@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aramiqayelyan.com/sitemap.xml
+Sitemap: https://ara.miqayelyan.com/sitemap.xml

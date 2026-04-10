@@ -25,23 +25,23 @@ export default function Home() {
           name="keywords"
           content="Ara Miqayelyan, psychologist Yerevan, therapist Armenia, mental health, anxiety, depression, therapy"
         />
-        <link rel="canonical" href="https://aramiqayelyan.com/" />
+        <link rel="canonical" href="https://ara.miqayelyan.com/" />
         {/* hreflang: tells Google which page serves which language */}
-        <link rel="alternate" hreflang="en" href="https://aramiqayelyan.com/" />
+        <link rel="alternate" hreflang="en" href="https://ara.miqayelyan.com/" />
         <link
           rel="alternate"
           hreflang="hy"
-          href="https://aramiqayelyan.com/hy"
+          href="https://ara.miqayelyan.com/hy"
         />
         <link
           rel="alternate"
           hreflang="ru"
-          href="https://aramiqayelyan.com/ru"
+          href="https://ara.miqayelyan.com/ru"
         />
         <link
           rel="alternate"
           hreflang="x-default"
-          href="https://aramiqayelyan.com/"
+          href="https://ara.miqayelyan.com/"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
