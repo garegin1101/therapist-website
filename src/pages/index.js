@@ -27,7 +27,11 @@ export default function Home() {
         />
         <link rel="canonical" href="https://ara.miqayelyan.com/" />
         {/* hreflang: tells Google which page serves which language */}
-        <link rel="alternate" hreflang="en" href="https://ara.miqayelyan.com/" />
+        <link
+          rel="alternate"
+          hreflang="en"
+          href="https://ara.miqayelyan.com/"
+        />
         <link
           rel="alternate"
           hreflang="hy"
@@ -197,17 +201,20 @@ export default function Home() {
               <p
                 className={`${inter.className} text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed`}
               >
-                Hello, I am Ara Mikaelyan—a certified psychologist, mental
-                health counselor, and psychoeducation specialist. I am a member
-                of the Logotherapy and Existential Analysis Association and the
-                EMDR Armenia Association. I serve as a facilitator for retreat
-                groups, where we provide a confidential environment for both
-                groups and individuals. Additionally, I am involved in
-                international youth programs focused on developing soft skills,
-                adaptation, professional orientation, and the enhancement of
-                internal personal processes. I also provide coaching and
-                mentoring services. I am the co-founder and a board member of
-                the 'Headway Projects' NGO.
+                Hello, my name is Ara Mikayelyan.
+                <br />I am a psychologist and mental health professional
+                specializing in individual counseling, psychological support,
+                and the development and implementation of psychoeducational
+                programs.
+                <br />I also facilitate retreat groups, creating a safe,
+                confidential, and supportive environment where participants can
+                deepen their connection with their inner processes and restore
+                their internal resources.
+                <br />
+                In addition, I am actively involved in international youth
+                programs focused on the development of soft skills, social and
+                cultural adaptation, career guidance, leadership development,
+                and personal growth among young people.
               </p>
 
               {/* CTA Buttons */}
