@@ -202,14 +202,18 @@ export default function Home() {
                 className={`${inter.className} text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed`}
               >
                 Hello, my name is Ara Mikayelyan.
-                <br />I am a psychologist and mental health professional
-                specializing in individual counseling, psychological support,
-                and the development and implementation of psychoeducational
-                programs.
-                <br />I also facilitate retreat groups, creating a safe,
-                confidential, and supportive environment where participants can
-                deepen their connection with their inner processes and restore
-                their internal resources.
+                <br />
+                <br />
+                I am a psychologist and mental health professional specializing
+                in individual counseling, psychological support, and the
+                development and implementation of psychoeducational programs.
+                <br />
+                <br />
+                I also facilitate retreat groups, creating a safe, confidential,
+                and supportive environment where participants can deepen their
+                connection with their inner processes and restore their internal
+                resources.
+                <br />
                 <br />
                 In addition, I am actively involved in international youth
                 programs focused on the development of soft skills, social and
